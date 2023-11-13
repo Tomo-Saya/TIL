@@ -1,0 +1,6 @@
+# 命名規則
+  snake_case CamelCaseはClassで使用する。
+  文字から始める。
+  文字、数字、_を使う。
+  Case sensitive　大文字と小文字を区別する。
+
