@@ -1,0 +1,3 @@
+status: :unprocessable_entity...render 'new', status: :unprocessable_entity
+Railsコントローラーのアクション内で使用される一般的なコード。
+新しいアイテムの作成や更新などの処理が失敗した場合に、new アクションまたは edit アクションで、入力されたデータが正しくないときにエラーメッセージを表示するために使われます。
