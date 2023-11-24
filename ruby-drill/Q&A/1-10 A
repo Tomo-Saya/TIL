@@ -1,0 +1,104 @@
+# 問題1
+hash = { one: 1, two: 2, three: 3 }
+puts hash.values
+1
+2
+3
+
+# 問題2
+user_data.each do |u|
+  puts u[:user][:profile][:name]
+end
+あるいは
+user_data.each{ |u| puts u.dig(:user, :profile, :name) }
+
+# 問題3
+class Article
+  def initialize(author, title, content)
+    @author = author
+    @title = title
+    @content = content
+  end
+  def author
+    @author
+  end
+  def title
+    @title
+  end
+  def content
+    @content
+  end
+end
+article = Article.new("阿部", "Rubyの素晴らしさについて", "Awesome Ruby!")
+puts "著者: #{article.author}"
+puts "タイトル: #{article.title}"
+puts "本文: #{article.content}"
+
+# 問題4
+require "date"
+day = Date.today.wday
+days = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+if day == 5
+  puts "今日は#{days[day]}だ！！！"
+else
+  puts "今日は#{days[day]}"
+end
+
+# 問題5
+unless a + b <= 0
+  puts "計算結果は0より大きいです"
+end
+
+# 問題6
+sum = 0
+10.times do |i|
+  sum += i + 1
+end
+puts sum
+
+# 問題7
+def search(target_num, input)
+  input.each_with_index do |num, index|
+    if num == target_num
+      puts "#{index + 1}番目にあります"
+      return
+    end
+  end
+  puts "その数は含まれていません"
+end
+input = [3, 5, 9 ,12, 15, 21, 29, 35, 42, 51, 62, 78, 81, 87, 92, 93]
+search(11, input)
+
+# 問題8
+def check_name(str) 
+  if str.include?(".")
+    puts "!エラー!記号は登録できません"
+  elsif str.include?(" ")
+    puts "!エラー!空白は登録できません"
+  else
+    puts "登録が完了しました"
+  end
+end
+puts "登録したい名前を入力してください(例)YamadaTaro"
+str = gets
+check_name(str) 
+
+# 問題9
+input = gets.to_i
+if input <= 0
+  puts "0以下の数字です"
+elsif input <= 10
+  puts "10以下の数字です"
+else
+  puts "10より大きい数字です"
+end
+
+# 問題10
+fruits_price = [["apple", [200, 250, 220]], ["orange", [100, 120, 80]], ["melon", [1200, 1500]]]
+fruits_price.each do |fruit|
+  sum = 0
+  fruit[1].each do |price|
+    sum += price
+  end
+  puts "#{fruit[0]}の合計金額は#{sum}円です"
+end
