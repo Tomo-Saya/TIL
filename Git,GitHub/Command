@@ -1,3 +1,12 @@
+# Gitの流れ
+1.リポジトリをコピー(clone)
+2.ファイルを更新してコミット
+3.ブランチを作成
+4.ローカルリポをリモートリポに反映(push)
+5.ブランチをmainにマージ
+6.リモートリポをローカルリポに反映(pull)
+7.不要なブランチを削除
+
 # フォルダ作成・削除
 mkdir フォルダ名...新規フォルダ作成
 rm -r フォルダ名...フォルダ削除
@@ -5,3 +14,43 @@ rm -r フォルダ名...フォルダ削除
 # ファイル作成・削除
 touch ファイル名...新規ファイル作成
 rm ファイル名...ファイル削除
+
+# Gitユーザーの設定
+git config --global use.name "ユーザー名"
+git config --global use.email "メールアドレス"
+
+# リモートリポからcloneしてローカルリポを作成
+git clone リモートリポのURL
+*GitHubから取得する
+*カレントディレクトリに保存される
+
+# 新しいブランチを切る
+git branch ブランチ名
+
+# 作業するブランチの切り替え
+git checkout ブランチ名
+*git checkout -d ブランチ名　作成して切り替えることができる
+
+# 作業状態を確認する
+git status
+
+# 作業内容をStaging areaに追加する
+git add
+*git add.　カレントディレクトリ配下の全ファイル、フォルダをStaging areaに追加する
+
+# Staging areaの内容をコミットする
+git commit -m "コミットメッセージ"
+*必ずコミットメッセージをつける（1行）
+
+# コミット履歴を表示する
+git log
+
+# リモートリポの更新をローカルリポに反映する
+git pull <remote_ref> <branchname>
+
+# ローカルリポの更新をリモートリポに反映する
+git push <remote_ref> <branchname>
+
+# 特定のブランチを削除する
+git branch -d ブランチ名
+*mainにマージしていないブランチは基本的には削除できない
