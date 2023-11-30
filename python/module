@@ -1,3 +1,5 @@
 # モジュールの呼び出し
 import <modulename>...グローバル変数もファンクションも利用可能
 from <modulename> import <functionname>...決められたファンクションのみ呼び出し
+
+# sys
