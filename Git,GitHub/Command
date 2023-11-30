@@ -72,3 +72,13 @@ git init
 $git merge <branchname>
 *git diff <base> <compare>: baseブランチをベースとしたcompareブランチとの差分を表示する
  たいていの場合、compareブランチが新しい変更などを施したブランチ
+
+# リモートリポから情報を取得する
+$git fetch <remote_ref>
+*情報を取得するだけでマージはしない
+*remote_refはリモートリポのリファレンス名　省略するとoriginになる
+
+# リモートリポから情報を取得し、今のブランチにマージする
+$git pull <remoto_ref> <branchname>
+*指定したリモートリポの指定したブランチを今いるブランチにマージする
+*基本的にはpush前にpullする
