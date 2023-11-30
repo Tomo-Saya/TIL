@@ -26,10 +26,14 @@ git clone リモートリポのURL
 
 # 新しいブランチを切る
 git branch ブランチ名
+*$git branch -a　リモートリポを含むローカルリポに存在する全てのブランチを表示する
+*$git branch -m <branchname1> <branchname2>: ブランチ名の変更
+*$git branch -d <branchname>: ブランチの削除
 
 # 作業するブランチの切り替え
 git checkout ブランチ名
-*git checkout -d ブランチ名　作成して切り替えることができる
+*$git checkout -b
+  ブランチ名　作成して切り替えることができる
 
 # 作業状態を確認する
 git status
@@ -64,3 +68,7 @@ git init プロジェクト名
 git init
 *カレントディレクトリに.gitフォルダが作成される
 
+# 指定したブランチを今いるブランチにマージする
+$git merge <branchname>
+*git diff <base> <compare>: baseブランチをベースとしたcompareブランチとの差分を表示する
+ たいていの場合、compareブランチが新しい変更などを施したブランチ
