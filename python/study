@@ -6,8 +6,9 @@
 ・変数名は大文字の場合、書き換えNGの意味
 
 # Lists / Dictionary / Tuple
-*Lists: []...[1, 2, 3, 4] etc
+*Lists: ()...[1, 2, 3, 4] etc
   後から変更可能
+　[]はインデックスにアクセスする際に使用
 *Dictionary:{}...{'key1: 'value1, 'key2': 2, 3: 'value3'} etc
 　後から変更、代入可能
 *Tuple: ()...(1, 2, 3) etc
