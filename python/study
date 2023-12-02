@@ -17,3 +17,4 @@
 # Noneとundefined
 *Noneは代入すると定義されているのでエラーにならない。
  定義されていないとundefinedとエラーが表示される。
+*returnするものがない時はNoneになる
