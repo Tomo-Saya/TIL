@@ -1,0 +1,83 @@
+# 11 
+問題
+以下の要件を満たす in1to10メソッドを実装しましょう。
+
+第一引数のnumが1以上かつ10以下の範囲であればTrueを出力すること
+第二引数のoutside_modeがTrueの場合は、第一引数numが条件範囲外でもTrueを出力すること
+それ以外はFalseを出力すること
+雛形
+def in1to10(num, outside_mode)
+  # ここに条件式を記述する
+end
+
+# 呼び出し例
+in1to10(5,false)
+in1to10(11,false) 
+in1to10(11,true) 
+
+# 13
+問題
+以下の要件を満たすmissing_charメソッドを実装しましょう。
+
+対象となる文字列からn番目の文字を削除すること
+削除された文字以外の文字列を出力すること
+雛形
+def missing_char(str, n)
+  # 処理を記述
+end
+
+# 呼び出し例（1つ目の引数には対象となる文字列を、2つ目の引数には対象となる文字列から何番目の文字を削除するのかを指定しましょう）
+missing_char('kitten', 1)
+
+# 14
+問題
+以下の要件を満たす police_troubleメソッドを実装しましょう。
+
+あなたは警官です。aとb二人の容疑者の取り調べをしています。このとき、次のルールで証言の真偽判定を行います。
+※問題文で登場したaとb二人の容疑者は、今回実装するpolice_troubleメソッドの引数として取り扱っていきます。
+
+第一引数aと第二引数bどちらの証言も真(true)であれば、Trueを出力すること
+第一引数aと第二引数bどちらの証言も偽(false)であれば、Trueを出力すること
+第一引数aと第二引数bで証言の真偽が一致しない場合であれば、Falseを出力すること
+雛形
+def police_trouble(a, b)
+  # ここに条件式を記述する
+end
+
+# 呼び出し例
+police_trouble(true, true) 
+police_trouble(false, false)
+police_trouble(true, false) 
+
+# 15
+問題
+以下の要件を満たすcount_hiメソッドを実装しましょう。
+
+対象となる文字列の中から、"hi"という特定の文字列の数を取得すること
+上記で取得した数を出力すること
+雛形
+1
+2
+3
+4
+5
+6
+def count_hi(str)
+  #  処理を記述
+end
+
+# 呼び出し例（引数には対象となる文字列を指定します）
+count_hi('abc hi ho')
+
+# 16
+問題.1
+任意の文字列に"code"が、左から何文字目に出てくるかを返し、その数を出力するメソッドを作りましょう。
+
+出力例：
+count_code("codexxcode") → 1
+count_code("aaacodebbb") → 4
+count_code("cozexxcode") → 7
+
+ヒント: indexメソッドを使用しましょう
+
+# 17
