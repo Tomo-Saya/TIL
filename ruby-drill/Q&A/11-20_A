@@ -47,3 +47,12 @@ count_hi('abc hi ho')
 def count_code(str)
   puts str.index("code", 0) + 1
 end
+
+# 17
+def parrot_trouble(talking, hour)
+  if talking && (hour < 7 || hour > 20)
+    puts "NG"
+  else
+    puts "OK"
+  end
+end
