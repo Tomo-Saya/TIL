@@ -1,0 +1,8 @@
+# プロジェクトの作成
+  $ django-admin startproject <プロジェクト名>
+
+# サーバー起動（動作したいプロジェクト内で実行する）
+  $ python manage.py runserver
+
+# アプリ作成
+  $ python manage.py startapp <アプリ名>
