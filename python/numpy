@@ -74,8 +74,17 @@
 
 # np.random
   ・np.random.rand() 擬似乱数 pseudo random
-    単純に乱数生成、毎回違う値が生成される
+    ・単純に乱数生成、毎回違う値が生成される
     ・引数を入れるとndarrayを返す
   ・np.random.seed()
     ・seedを指定すると、毎回同じ乱数を生成してくれる
     ・乱数生成時はseedを使用する
+　・np.random.randn()
+    ・標準正規分布（平均0,分散1）からランダムの値が返される
+  ・np.random.normal()
+    ・任意の平均と標準偏差の正規分布から擬似乱数を生成
+  ・np.random.randint()
+    ・low以上high未満のランダムな整数でsizeのndarrayを生成
+    ・high=Noneの場合は0以上low未満
+  ・np.random.choice()
+    ・指定したndarray(list)からランダムな値を取ってくる
