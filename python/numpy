@@ -19,6 +19,7 @@
         array1は[1, 2, 3]がarray2のリスト数と同じだけ存在する扱いで計算される
 
 # Shape 例：ndarray = np.array([[1, 2], [3, 4], [5, 6]])
+  ・numpyのshapeはtuple形式で操作する
   ・.shapeでndaarayの行列数を確認　ndarray.shape(3, 2)
   ・.reshapeでshapeを変更　ndarray.reshape(2, 3)　（結果）array([[1, 2, 3],[4, 5, 6]])
     サイズが合わないとエラーになる。3x2の元のarrayに対して1x3のreshapeはできない
@@ -33,17 +34,48 @@
     arrayを1次元にする
 
 # [N:M]N以上M未満を返す
-    ・Nを省略すると、最初からM未満
-    ・Mを省略すると、Nから最後
-    ・「,」で繋ぐ場合と「[]」で繋ぐ場合で結果が異なる
-      ndarray = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10 ,11, 12], [13, 14, 15, 16]])    
-      array([[ 1,  2,  3,  4],
-             [ 5,  6,  7,  8],
-             [ 9, 10, 11, 12],
-             [13, 14, 15, 16]])
-      ndarray[:3, 2:]
-      array([[ 3,  4],
-             [ 7,  8],
-             [11, 12]])
-      ndarray[:3][2:]
-      array([[ 9, 10, 11, 12]])
+  ・Nを省略すると、最初からM未満
+  ・Mを省略すると、Nから最後
+  ・「,」で繋ぐ場合と「[]」で繋ぐ場合で結果が異なる
+    ndarray = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10 ,11, 12], [13, 14, 15, 16]])    
+    array([[ 1,  2,  3,  4],
+           [ 5,  6,  7,  8],
+           [ 9, 10, 11, 12],
+           [13, 14, 15, 16]])
+    ndarray[:3, 2:]
+    array([[ 3,  4],
+           [ 7,  8],
+           [11, 12]])
+    ndarray[:3][2:]
+    array([[ 9, 10, 11, 12]])
+
+# np.arange(start=0, stop, step=1)
+  ・start以上、stop未満の要素をstep間隔に作成
+    stopとstepは省略可能。その場合、start=0,step=1が入る
+    stepを負の値にすると降順も可能
+
+# np.linspace(start, stop, num=50) endpoint=Falseという引数でstopの数字以下ではなく未満で結果を出力可能
+  ・start以上stop以下の数をnum個で区切った値を出力
+    stopを含むので注意
+
+# np.logspace(start, stop, num=50) endpoint=Falseという引数でstopの数字以下ではなく未満で結果を出力可能
+  ・10**start以上10**stop以下の数をnum個で区切った数を出力
+
+# np.zeros()
+  ・要素が全て0のndarray
+  ・shapeの引数にtupleではなくintを入れると、一列のarrayができる
+
+# np.ones()
+  ・要素が全て1のndarray
+
+# np.eye()
+  ・対角要素が全て1のndarray
+  　NxNの単位行列を作成
+
+# np.random
+  ・np.random.rand() 擬似乱数 pseudo random
+    単純に乱数生成、毎回違う値が生成される
+    ・引数を入れるとndarrayを返す
+  ・np.random.seed()
+    ・seedを指定すると、毎回同じ乱数を生成してくれる
+    ・乱数生成時はseedを使用する
