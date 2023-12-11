@@ -1,0 +1,89 @@
+# Series
+  ・1カラム分全てのデータや、1レコードのデータ
+  ・dictionaryからSeries作成
+    data = {
+        'Name': 'John',
+        'Sex': 'male',
+        'Age': 22
+    }
+    pd.Series(data)
+    Name    John
+    Sex     male
+    Age       22
+    dtype: object
+  ・Numpy Arrayから作成
+    array = np.array([22, 31, 42, 23])
+    age_series = pd.Series(array)
+    array = np.array(['John', 'male', 22])
+    john_series = pd.Series(array, index=['Name', 'Sex', 'Age'])
+    john_series['Name']
+    'John'
+  ・NumPy同様、統計量を計算可能(.meanなど)
+
+    
+# DataFrame
+  ・縦横のSeriesデータの集まり
+  ・# Numpy array　から作成
+ndarray = np.arange(10).reshape(2, 5)
+ndarray
+array([[0, 1, 2, 3, 4],
+       [5, 6, 7, 8, 9]])
+pd.DataFrame(ndarray, index=['index1', 'index2'], columns=['a', 'b', 'c', 'd', 'e']) columnsとindexを指定して作成可能
+
+  ・Dictionary　から作成
+    data1 = {
+        'name': 'John',
+        'sex': 'male',
+        'age': 22
+    }
+    data2 = {
+        'name': 'Zack',
+        'sex': 'male',
+        'age': 30
+    }
+    data3 = {
+        'name': 'Emily',
+        'sex': 'female',
+        'age': 32
+    }
+    pd.DataFrame([data1, data2, data3])
+      name	sex	age
+    0	John	male	22
+    1	Zack	male	30
+    2	Emily	female	32
+  ・記述を簡素化した場合　Dictionaryの各Valueがリスト
+    data = {
+        'name': ['John', 'Zack', 'Emily'],
+        'sex': ['male', 'male', 'female'],
+        'age': [22, 30, 32]
+    }
+    pd.DataFrame(data)
+
+  ・DataFrameを省略せずに表示
+    pd.set_option('display.max_columns', None)　カラムを省略せずに表示
+    pd.set_option('display.max_rows', None)　行を省略せずに表示
+
+  ・DataFrameの行数を指定して表示
+    .head() 最初の5行のみ表示（カッコに数字を入れるとその行数表示）
+  
+  ・統計量を確認（数値項目のみ）
+    .describe()
+
+  ・カラムリストを取得
+  　.columns
+
+  ・特定のカラムのSeriesを取得
+    df['カラム名']で特定のカラムのSeriesを取得
+
+  ・特定の行のSeriesを取得
+    .iloc[index]
+    .locでindexが文字列の場合は取得できる
+
+  ・指定カラムや行削除が可能
+    .drop()　カラムを落とすときはカラム名を()内に記述かつ、axis=1を指定する　.drop('カラム名', axis=1)
+    inplace=Trueと記述すると元のdfを更新する
+
+# Filter
+  ・df[Boolのlistかseries]で行を選択抽出　df[df'カラム名'] == '抽出したいキーワード']　が一般的な記述
+  ・複数条件で抽出する場合、()&()や()|()で複数の条件を入れる
+  ・~でNOT演算
