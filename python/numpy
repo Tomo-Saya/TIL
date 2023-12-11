@@ -1,0 +1,49 @@
+# np.arrayのデータタイプは独自のタイプを持つ
+
+# dtype=np.uint8　はよく使用される (unsigned + - integer <8bit or float32 or folat64)
+  ・unsigned, integer, 8bitのデータタイプ
+  ・uint8 = 0~255の値
+  ・float32: 機械学習に使うデータを保存する時によく使う
+  ・float64: 実際のモデル学習で学習することが多い
+  ・.astype()で元のndarrayのdtypeを変更可能 例：ndarray.astype(np.uint8)
+
+# ndarrayの演算は各要素毎に行われる
+
+# Broadcasting
+  ・要素が一致しなくても、自動で補ってくれる
+    例：array1 = np.array([1, 2, 3])
+        array2 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        array1 + array2 = array([[ 2,  4,  6],
+                                 [ 5,  7,  9],
+                                 [ 8, 10, 12]])
+        array1は[1, 2, 3]がarray2のリスト数と同じだけ存在する扱いで計算される
+
+# Shape 例：ndarray = np.array([[1, 2], [3, 4], [5, 6]])
+  ・.shapeでndaarayの行列数を確認　ndarray.shape(3, 2)
+  ・.reshapeでshapeを変更　ndarray.reshape(2, 3)　（結果）array([[1, 2, 3],[4, 5, 6]])
+    サイズが合わないとエラーになる。3x2の元のarrayに対して1x3のreshapeはできない
+  ・次元の違いに注意する。仮に2次元のデータ数が1次元と全く同じだとしても、あくまでも2次元として扱う
+    ndarray1 = np.array([1, 2, 3])　1次元
+    ndarray2 = np.array([[1, 2, 3]])　2次元
+　・np.expand_dims(ndarray, axis) axisの数値はどこにrankを増やすか指定する。axis=-1とすると最後のrankを追加する
+    ndarrayの次元を増やす
+  ・np.squeeze(ndarray)
+    ndarrayの次元を減らす
+  ・.flatten()
+    arrayを1次元にする
+
+# [N:M]N以上M未満を返す
+    ・Nを省略すると、最初からM未満
+    ・Mを省略すると、Nから最後
+    ・「,」で繋ぐ場合と「[]」で繋ぐ場合で結果が異なる
+      ndarray = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10 ,11, 12], [13, 14, 15, 16]])    
+      array([[ 1,  2,  3,  4],
+             [ 5,  6,  7,  8],
+             [ 9, 10, 11, 12],
+             [13, 14, 15, 16]])
+      ndarray[:3, 2:]
+      array([[ 3,  4],
+             [ 7,  8],
+             [11, 12]])
+      ndarray[:3][2:]
+      array([[ 9, 10, 11, 12]])
