@@ -76,14 +76,66 @@ pd.DataFrame(ndarray, index=['index1', 'index2'], columns=['a', 'b', 'c', 'd', '
     df['カラム名']で特定のカラムのSeriesを取得
 
   ・特定の行のSeriesを取得
-    .iloc[index]
-    .locでindexが文字列の場合は取得できる
+    .iloc[index] 最後のデータを取得したい場合は[-1]とする　iloc.[index]['カラム名']で特定行の絡む名を取得する
+    .locでindexを他のカラムにしている場合は取得できる
 
   ・指定カラムや行削除が可能
     .drop()　カラムを落とすときはカラム名を()内に記述かつ、axis=1を指定する　.drop('カラム名', axis=1)
     inplace=Trueと記述すると元のdfを更新する
 
 # Filter
-  ・df[Boolのlistかseries]で行を選択抽出　df[df'カラム名'] == '抽出したいキーワード']　が一般的な記述
+  ・df[Boolのlistかseries]で行を選択抽出　df[[df'カラム名'] == '抽出したいキーワード']　が一般的な記述
   ・複数条件で抽出する場合、()&()や()|()で複数の条件を入れる
   ・~でNOT演算
+
+  .index() フィルターした際にインデックスを振り直してカラムを追加する　()内に「drop=True」で元々のインデックスに上書き
+
+  .set_index('カラム名') 指定したカラムをindexにすることができる。
+
+  .dropna() NaNを含んでいるレコードを全てdropする subset引数で特定のカラムにNaNがあるレコードだけdrop可能
+  df.dropna(subset=['カラム名'])
+
+  .fillna('カラム名') 特定のカラムのNaNに代入する
+
+  .isna() DataFrameのNaNチェックに利用
+  df['カラム名'].isna()
+
+  .groupby() カラム毎にグループ分けをして、そのグループの各カラムの統計量を出す
+  例：def.groupby('original_language').mean() original_languageの平均値を出す場合
+  例：df.groupby('グルーピングしたいカラム名')['maxとminを確認したいカラム名'].max()　maxとminはカラムを指定する必要がある
+  例：df.iloc[df.groupby('グルーピングしたいカラム名')['maxとminを確認したいカラム名'].idxmax()]　グルーピングしたカラムのそれぞれmax/minの一覧を表示する
+
+# 表結合
+  pd.concat([df1, df2,...], axis=0)　データフレームを縦に結合（axis=0はなくてもOK）
+  pd.concat([df1, df2,...], axis=1)　データフレームを横に結合
+
+  pd.merge() 共有のカラムをKeyに結合する
+  例：df1.merge(df2) 左の表(df1)に右の表(df2)を結合するイメージ
+  例：df1.merge(df2, how='inner') 表の共通している部分だけを残して表示する(デフォルトはinnerなので記述不要)
+  例：df1.merge(df2, how='outer') 表の共通していない部分も全て表示する
+  例：df1.merge(df2, how='outer', on'Key') onという引数で結合のキーとなるカラムを指定
+  例：df1.merge(df2, on'Key', suffixes=('_right', '_left')) sffixesを指定して、結合後のカラム名を分かりやすくする
+  例：df1.merge(df2, left_on='Key1', right_on='Key2') Keyとなるカラム名が異なる場合、left_on,right_on引数でそれぞれ指定
+  例：df1.merge(df2, left_index=True, right_index=True)　indexを使って結合することも可能(非推奨)
+
+# DataFrameとSeriesの便利関数
+  .unique() ユニークな値のみ取得
+  .nunique() ユニークな値の数を取得
+
+  .value_counts() それぞれの値にいくつのレコードがあるかを取得
+
+  .sort_values() 指定したカラムでsort、デフォルトは昇順(ascending)
+
+# DataFrameのIteration
+  .appry() 指定したカラムのSeriesにapplyすれば、指定した各カラムに対して関数を実行した値がSeriesで返ってくる
+
+  .iterrows() rowをいてレーションさせる。イテレーターは(idx,row)を返す
+
+# pivot_table()
+  例：.pivot_table(values='集計したい値', index=['集計軸'], columns=['集計軸'])
+  .xs pivot_tableの指定行だけを抜き出す　levelでindexのキーを指定
+　  例：pivot_df.xs('指定行', level='indexのキー')
+
+# DataFrameの保存
+  .to_csv('path)　DataFrameをcsv形式で保存 index=Falseを引数に追加すると、余計なindexは保存しない
+  
