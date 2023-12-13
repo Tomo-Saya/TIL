@@ -1,0 +1,20 @@
+# importの記述
+  1. import matplotlib.pyplot as plt　の形が基本
+     %matplotlib inline
+
+# plt.plot(<横軸>, <縦軸>)
+  例：シグモイド関数の表し方  
+    x = np.linspace(-10, 10, 100)
+    z = 1 / (1 + np.exp(-x))
+    plt.plot(x, z)
+  ・下記記述も可能
+    df = pd.DataFrame({'a': [1, 2, 3, 4, 5, 6],
+                      'b': [10, 15, 40, 100, 200, 400]})
+    plt.plot('a', 'b', data=df)
+
+# 付属情報をつける
+  plt.plot(x, z)
+  plt.xlabel('x')　x軸にラベル名をつける
+  plt.ylabel('y')  y軸にラベル名をつける
+  plt.title('sigmoid(x)')  表にタイトルをつける
+  plt.legend()  凡例を表示でき、場所の指定できる
