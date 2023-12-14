@@ -91,4 +91,39 @@
       'lemon' in fruits...False
       'apple' not in fruits...False
       'lemon' not in fruits...True
-    
+
+# forループ 繰り返し処理
+  リストと文字列の繰り返し処理を行うことができる
+  例：for fruit in fruits:
+          print(f"I love {fruit}!!")
+  例：for char in "hello world":
+          print(f"char: {char}")
+  ループで回すことをイテレーションと呼ぶ
+  イテレーションができるオブジェクトをイテラブルと呼ぶ  
+  何かの条件を満たしたらbreakして、それ以外はコンティニューで繰り返し処理を行う。（continueはなくても挙動は問題ない）
+
+# range
+  range(start, stop, step)
+    startは省略すると0からになる。
+    stepは1なら省略可能
+    数字だけをループで回す場合はiを使用することが多い
+  例：for _ in range(10):
+         print("hello")
+    変数を使わずに繰り返し処理だけを行いたい場合、変数は「_」とする。
+
+# whileループ
+  条件を設定して、条件がTrueの間は繰り返し処理を行う。
+  count = 0
+  while count < 10:
+    print(count)
+    count += 1
+  例：
+  while True:
+    age = int(input("あなたは何歳ですか？"))
+    if not 0 <= age < 120:
+        print("入力された値は正しくありません")
+        continue
+    else:
+        print(f"あなたは{age}歳です")
+        break
+    何かの条件を満たしたらbreakして、それ以外はコンティニューで繰り返し処理を行う。（continueはなくても挙動は問題ない）
