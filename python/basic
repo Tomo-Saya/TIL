@@ -101,6 +101,7 @@
   ループで回すことをイテレーションと呼ぶ
   イテレーションができるオブジェクトをイテラブルと呼ぶ  
   何かの条件を満たしたらbreakして、それ以外はコンティニューで繰り返し処理を行う。（continueはなくても挙動は問題ない）
+  else文を記述した場合、ループ完了後に実行される。
 
 # range
   range(start, stop, step)
@@ -127,3 +128,88 @@
         print(f"あなたは{age}歳です")
         break
     何かの条件を満たしたらbreakして、それ以外はコンティニューで繰り返し処理を行う。（continueはなくても挙動は問題ない）
+    else文を記述した場合、whileがFalseになったら実行される。
+
+# enumerate
+  リストのインデックスとオブジェクトをループで回すことができる。
+  例：
+    for idx, fruit in enumerate(fruits):
+    print(idx)
+    print(fruit)  index用の引数作り、enumerataの引数にリストを入れる。
+  例：
+    for x in enumerate(fruits):
+    print(x) 
+    (0, 'apple')　tuple型で返される
+
+# リスト内包表記(list comprehension)
+  例：for文
+    for i in range(10):
+    square_list.append(i ** 2)
+  例：リスト内包表記
+    square_list = [i ** 2 for i in range(10)]
+      「i ** 2」...最終的にリストの値になるもの
+  例：リスト内包表記if文
+    even_square_list = [i ** 2 for i in range(10) if i % 2 == 0]
+      偶数のみ二乗する
+
+# tuple()
+  変更できないリスト、[]ではなく()を使う
+  リスト同様、indexを使用できる
+  変更する必要がないものに使うことが多い
+  例：tupleの記述
+    date_of_birth = (1990, 2, 3) 
+    print(date_of_birth) → (1990, 2, 3)
+  例：tupleのアンパック処理
+    year, month, date = date_of_birth
+    print(year) → 1990
+    print(month) →2
+    print(date) → 3
+
+# dictionary: キーと値の組み合わせを複数保持するデータ型
+  順番の保持はしておらず、キーを使ってバリューを取ってくる
+  キーとバリューは数値でも文字列でも問題ない
+  バリューはリストやディクショナリーも入れることができる
+  例：キーとバリューの入れ方　「キー: バリュー」
+    fruits_colors = {'apple': 'red', 'l  emon': 'yellow', 'grapes': 'purple'}
+      fruits_colors[キー]とすることで、バリューを取ってくる
+  例：新しいキーとバリューの追加
+    fruits_colors[キー] = バリュー
+      既にキーがある場合は、バリューを更新する
+  例：.key()/.values() for文でキーとバリューを取ってくる記述
+    for fruit in fruits_colors.key():
+    for fruit in fruits_colors.values():
+  例：.items()  キーとバリューをセットにしてtupleでforで回す
+    for fruit, color in fruits_colors.items():
+  例：.get() キーを指定して、キーがない場合はデフォルトの値を返す
+    fruits_colors.get('peach', 'Nothing')
+      inputでよく使う
+  例：.update()  ディクショナリー同士を結合することができる
+    fruits_colors2 = {'peach': 'pink', 'kiwi': 'green'}
+    fruits_colors.update(fruits_colors2)
+
+# sets: 重複しないリスト {}
+  順番を保持しない
+  例：fruits = {'apple', 'peach', 'lemon', 'grapes', 'apple'} → {'peach', 'lemon', 'apple', 'grapes'}
+
+# casting: データ型の変換 str(), int(), float(), list(), bool(), tuple(), set()
+
+# mutable/immutable
+  mutable: 変更可能なオブジェクト list, dict, set
+    例：
+        text_list = []
+        for i in range(1, 11):
+            text_list.append(str(i))
+        text = "-".join(text_list)
+        print(text)
+      
+  immutable: 変更不可能なオブジェクト int, float, str, bool, tuple
+    例：
+        text = "" # 1-2-3-4-5-6-7-...
+        for i in range(1, 11):
+            if i == 1:
+                text += str(i)
+            else:
+                text += '-' + str(i)
+        print(text)
+    
+  
