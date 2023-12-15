@@ -94,3 +94,10 @@
 　　例：extendsテンプレートタグで catalogue/base.html と指定しているので、
 　　　　catalogue/templates/catalogue/base.html ファイルが使われます。
 　　指定するときの名前のルールは、View関数でテンプレートを指定したときと同じ。
+
+# @require_POST
+　・View関数の先頭に@require_POSTデコレーターをつけるとPOSTでしかアクセスできなくなる。
+　　ブラウザーで /products/1/delete/ のようなURLを表示すると何も表示されず、
+　　この場合ブラウザーはGETでアクセスするので、@require_POST が「POSTじゃないとアクセスできない」と返す。
+　　誰かがこのURLを直接開いてしてしまった場合に、商品が削除されるのを防ぐ。
+　・インポートを行う。　from django.views.decorators.http import require_POST
