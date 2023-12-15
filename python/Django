@@ -101,3 +101,8 @@
 　　この場合ブラウザーはGETでアクセスするので、@require_POST が「POSTじゃないとアクセスできない」と返す。
 　　誰かがこのURLを直接開いてしてしまった場合に、商品が削除されるのを防ぐ。
 　・インポートを行う。　from django.views.decorators.http import require_POST
+
+# Paginator(ページネーション)
+　・クエリセット（order_by(...)やfilter(...)など）の結果と、ページごとのアイテム数を渡す。
+　・paginator.page(ページ番号) を渡すと1ページあたりのオブジェクトが取得できる。
+　・
