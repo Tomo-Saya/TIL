@@ -1,0 +1,44 @@
+# 引数
+  ・引数に渡す値自体のことを「argument」と呼ぶ
+  　引数のことを「parameter」と呼ぶ
+  キーワード引数は位置引数の後に書く
+
+# *args / **kwargs
+  ・*args
+    不特定多数の引数を渡すことが可能
+    *argsをその後argsで使うことでtupleで返ってくる
+  ・**kwargs
+    不特定多数のディクショナリを渡すことが可能
+  ・* / **
+    unpacking operator
+    例：
+      numbers = (1, 2, 3)
+      print(*numbers)の結果 == print(1, 2, 3)  ->  1 2 3
+
+# Type annotation
+  ・def 「関数名」(引数1: 型, 引数2: 型...) 
+        argumentの型をヒントとすることができる
+        （強制力はないので、エラーは出ない）
+
+# scope
+  ・ローカル変数
+    関数の中で定義された変数は関数の中でしか使用できない
+  ・グローバル変数 / モジュール変数
+    ・ローカル変数でも使用できるのでバグの元になることがある（更新はできない）
+    　できるだけ関数内でローカル変数を定義し、グローバル変数は使用しないことが好ましい
+    ・命名規則として、大文字で変数名を書くと変更しないということになる(constant variable)
+      強制力はない
+  ・globalキーワード
+    global 「変数名」：関数内でもローカル変数ではなく、グローバル変数として定義することができる
+
+# nested function: 関数内で関数を定義
+  ・例：def outer(outer_param):
+        def inner():
+        print("This is inner function")
+        print(outer_param)
+        inner()
+    ・外からinnerを呼ぶとエラーになる
+    ・innerはouterの変数を使用できる（形としてはグローバル変数のように見えるため）
+    ・outerはinnerの変数を使用できない（形としてはローカル変数のように見えるため）
+    ・nonlocal inner outer: outer変数にもアクセスして変更することができるようになる。（globalと同じ）
+  
