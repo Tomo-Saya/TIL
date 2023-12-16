@@ -40,5 +40,19 @@
     ・外からinnerを呼ぶとエラーになる
     ・innerはouterの変数を使用できる（形としてはグローバル変数のように見えるため）
     ・outerはinnerの変数を使用できない（形としてはローカル変数のように見えるため）
-    ・nonlocal inner outer: outer変数にもアクセスして変更することができるようになる。（globalと同じ）
-  
+    ・nonlocal inner outer: outer変数にもアクセスして変更することができるようになる（globalと同じ）
+
+# closure： 状態をキープした関数を作ることができる
+  ・状態が静的・動的のパターンがある
+  （・Pythonは全データがオブジェクト）
+  （・関数もオブジェクト）
+  （・関数を変数に代入して、リストの要素とすることもできる）
+  （・関数も引数として渡すことができる）
+  （・関数をreturnする）
+    例：
+        def return_func():
+          def inner_func():
+            print("This is inner function")
+          return inner_func
+        ・return inner_func:inner_func関数を返す
+          return inner_func():inner_func()の()引数を返す
