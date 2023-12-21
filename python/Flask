@@ -1,0 +1,72 @@
+# fraskのインポート
+  from flask import Flask
+  app = Flask(__name__)
+  ・Flaskフレームワークを利用するために毎回書く。
+  ・2行目でFlaskのオブジェクトを作っている。
+    これがWebアプリケーションとして動作して、リクエストを受け付けたり、レスポンスを生成したりする。
+  ・Flask() の引数に__name__が指定されている。モジュール名やパッケージ名を引数に代入するため。
+    これはFlaskが、ファイルなどを参照する場合に起点となるパスが必要となるため。
+    appはFlaskのオブジェクトのこと。
+
+# ルーティング
+　例：
+    @app.route("/")
+    def hello_world():
+      return "Hello, World!"
+    ・@app.route("/") と指定されていたら、http://ドメイン名/というURLでサイトにアクセスされた場合は、hello_world 関数が実行される。
+      hello_world 関数の戻り値で、Webページに表示するレスポンスを定義している。
+    ・Webページのアドレスはホスト名（ドメイン）+コンテキストパスに分割できる。
+      PyQのWebサイトを例にすると下記の通り。
+      https://pyq.jp/pricing/
+      この中でpyq.jpがホスト名となっている。pricingがコンテキストパス（ContextPath）を指す。
+      Flaskのルーティングの対象はコンテキストパスを指す。
+      コンテキストパスに対応する処理を紐付ける必要があり、この機能を総じてルーティングと呼ぶ。
+
+# テンプレート
+  ・render_template関数は、templatesフォルダを起点としたパスを引数にする。
+    該当のファイルの中身を読み込んで、レスポンスを返す。
+    例：render_template('hello.html')
+      templatesフォルダ直下のhello.htmlというファイルを指す。
+  ・Flaskで利用するテンプレートエンジンはJinjaと言う。
+  ・テンプレート中の {{ hello }} は変数として解釈される。
+    render_template 関数の第2引数にキーワード引数を渡すことで、任意のデータを変数にセットできる。
+  ・for文
+    ・Pythonのfor文と異なり、ループするブロックの終わりを書く必要がある。
+      {% endfor %}の書き忘れに注意する。
+  ・フォーム
+    url_for関数
+      Flaskの関数。
+      引数に関数名を入れると、routeメソッドで指定されたアドレスが戻り値になる。
+      また、第2引数に関数の引数に代入する値を指定できる。
+
+# データの受け渡し
+  ・GET -> request.args['name']
+    POST ->	request.form['name']
+
+# セッション
+　例：
+    @app.route("/login")
+    def login():
+    your_name = request.args.get('name', '')
+    if your_name:
+        # 名前が入力されている場合は、sessionに格納
+        session['username'] = your_name
+        # todo画面を表示
+        return redirect(url_for('todo'))
+    else:
+        # 名前が未入力の場合は、ログイン画面を再表示
+        return redirect(url_for('index'))
+    
+    @app.route("/logout")
+    def logout():
+    # セッションを削除
+    session.clear()
+    # ログイン画面を表示
+    return redirect(url_for('index'))
+
+    @app.route("/todo", methods=['GET', 'POST'])
+    def todo():
+    # ログインしていない場合はログイン画面を表示
+    if 'username' not in session:
+        return redirect(url_for('index'))
+    return render_template('todo.html')
