@@ -1,0 +1,6 @@
+# URLに応じた表示の変更
+  例：
+    html：<h1>Hello,{{ name }}</h1>
+    py　：@app.route("/<name>")
+          def hello(name):
+          return render_template('index.html', name=name)
