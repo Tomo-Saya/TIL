@@ -71,3 +71,44 @@
     if 'username' not in session:
         return redirect(url_for('index'))
     return render_template('todo.html')
+
+# テンプレートの呼び出し
+  ・extends "base.html"
+    テンプレートファイルの1行目に記述することで、「base.html」を呼び出す
+  ・{% block content %}
+    {% endblock %} 
+
+# SQLite 
+  ・データベース作成
+    コマンドプロンプト：sqlite3 「データベース名」.db
+      データベースの作成、作成済の場合は接続
+  ・テーブル作成
+    コマンドプロンプト：create table テーブル名(
+    項目の定義
+    )
+    例）create table memo(
+        id integerprimary key autoincrement,   ・・・プライマリキー自動採番*必ず一意になる番号
+        title text not null,  ・・・値を必ず入れる
+        body text not null　・・・値を必ず入れる
+        );
+  ・テーブルの削除
+    drop table 「テーブル名」;
+  ・データを入れる(insert)
+    insert into 「テーブル名」(カラム名1, カラム名2...)
+    values("カラム名1の値", "カラム名2の値");
+  ・データ取得
+    select カラム名　from テーブル名
+    where 条件　*whereは省略可能、where idでid番号を指定する
+    例：select * from memo;　・・・*は全項目
+        select title, body from memo;  ・・・title,bodyの情報を取得
+  ・データ更新(update)
+    update テーブル名
+    set カラム名1 = 値1,
+    カラム名2 = 値2 where 条件;　・・・where id=1;の場合id1の更新
+  ・データ削除(delete)
+    delete from テーブル名
+    where 条件;
+  ・DBのトランザクション
+    ・BEGIN：処理を開始することを宣言・・・処理前に宣言することで誤った操作を元に戻せる
+    ・COMMIT：処理を確定
+    ・ROLLBACK：処理をキャンセル
