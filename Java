@@ -24,3 +24,47 @@
       int number1 = 13;
       int number2 = 4;
       System.out.println((double)number1 / number2);
+
+# if / else if / else
+  if (条件式) {
+    処理;
+  } else if (条件式) {
+    処理;
+  } else {
+    処理;
+  }
+  {}（ブロック）を使用して複数の処理をまとめる。
+
+# switch
+  switch (条件の値) {
+    case 値1:
+      処理;
+      break;
+    case 値2:
+      処理;
+      break;
+    case 値3:
+      処理;
+      break;
+    default:
+      処理;
+      break;
+  }
+  1.breakはswitch文を終了させる命令のこと。
+    breakがないと、合致したcaseの処理を行った後、その次のcaseも処理してしまう。
+    switch文には必ずbreakを入れる。
+  2.defaultはif文のelseの様な働きをする。
+
+# while
+  while (条件) {
+    繰り返す処理;
+  } 
+
+# for
+  for (変数の初期化;条件式;変数の更新) {
+  処理
+  }
+
+# break / continue
+  break: if文などと組み合わせることで、任意の個所で繰り返し処理を終了させることができる。
+  continue: if文などと組み合わせることで、その条件の周の時だけ処理をスキップして次の周を実行する。
