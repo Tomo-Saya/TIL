@@ -1,0 +1,26 @@
+# 分の終わりには「;」を付ける。
+
+# コメントアウトは「//」を付ける。
+
+# 出力
+  System.out.println()
+
+# 変数の定義
+  命名規則：キャメルケース
+  1.データ型を指定する。
+  2.変数の名前を決める。
+  例：String name;
+      name = "Tomoya";
+  3.変数の定義と値の代入は同時に行うことができる。（変数の初期化）
+  例：int number = 10;
+      String text = "Hello World";
+  4.変数の上書きを行うときはデータ型を付けない。
+  例：text = "Good Morning";
+  5.整数…int型
+    小数…double型
+
+# キャスト（強制的な型変換）
+  例：int型の計算結果をdoubleで表示する場合
+      int number1 = 13;
+      int number2 = 4;
+      System.out.println((double)number1 / number2);
