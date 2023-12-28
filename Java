@@ -116,3 +116,7 @@
   文字列：String 変数名 = scanner.next();
   整数  ：int 変数名 = scanner.nextInt();
   小数  ：double 変数名 = scanner.nextDouble();
+
+# インスタンス
+  1.クラスからインスタンスを生成
+    new クラス名()
