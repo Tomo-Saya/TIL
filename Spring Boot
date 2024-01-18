@@ -16,3 +16,8 @@
 # th:text="${sampleText}"
   表示したいテキストの個所を{sampleText}の内容に置き換える
   
+# MySQLとの連携
+  ・下記ライブラリを導入する
+    MySQL Driver・・・JavaからMySQLを操作するためのライブラリ
+    MyBatis・・・SQL分の発行を、Javaのメソッドとして定義できるようにするライブラリ
+    Lombok・・・コードの記述を簡略化するためのライブラリ
