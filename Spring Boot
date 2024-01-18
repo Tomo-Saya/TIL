@@ -1,3 +1,18 @@
 # Thymeleafの使い方
   1.表示させるためのHTMLを作成する
   2.コントローラーから「1」のファイルを読み込めるようにする
+
+# Thymeleafで変数を使う方法 (Spring BootではModel型のオブジェクトを使用して変数を渡す)
+  1.コントローラーの引数でModelオブジェクトを受け取る
+    ex.Model model　・・・Modelオブジェクトを受け取る。オブジェクトの変数名は一般的には「model」とする
+  2.Modelオブジェクトに、ビューで表示させたいデータを追加する
+    ex.model.addAttribute("sampleText", sampleText);
+      ・「addAttribute」:追加を行うメソッド
+      ・1つ目の引数ではビューで読み込む際の名称を指定する
+        「""」で囲んで文字列とする
+      ・2つ目の引数はmodelに追加したいデータを指定する
+  3.ビューでModelオブジェクトのデータを読み込む
+
+# th:text="${sampleText}"
+  表示したいテキストの個所を{sampleText}の内容に置き換える
+  
