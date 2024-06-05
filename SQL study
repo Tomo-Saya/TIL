@@ -47,3 +47,63 @@ INSERT INTO テーブル名
 ・パターン文字
 　%：任意の0文字以上の文字列
 　_：任意の1文字
+
+[論理演算子の優先度]
+NOT→AND→or
+
+[DISTINCT]
+SELECT文の選択リスト前に記述すると、結果表の中で内容が重複している行があれば取り除く
+*データの種類を取得したい時に役立つ
+ SELECT DISTINCT 列名
+            FROM テーブル名
+
+[ORDER BY]
+SELECT文の最後にORDER BY句を記述すると、指定した列の値を基準として並び替えた検索結果を取得できる
+ SELECT 列名
+ FROM テーブル名
+ ORDER BY 列名1 並び順1, 列名2 並び順2
+*並び順には「ASC（昇順）」「DESC（降順）」を指定する
+ 省略すると「ASC」と同じ意味になる
+*列名と並び順を複数指定することで、複数の列で並べ替えることもできる
+ 「列名1」「並び順1」で同じ項目があった場合、「列名2」「並び順2」で並べ替える
+*列番号を指定して並べ替えることも可能
+*ORDER BY句を指定しないと結果表の並び順はランダムである
+・OFFSET - FETCH
+ SELECT 列名 FROM テーブル名
+ ORDER BY 列名
+ OFFSET 先頭から除外する行数 ROWS
+ FETCH NEXT 取得行数 ROWS ONLY
+
+[UNION]  和集合
+2つのSELECT文をUNIONでつないで記述すると、それぞれの検索結果を足し合わせた結果（和集合）で返される
+SELECT 文1
+UNION(ALL)
+SELECT 文2
+*UNION ALLでは重複行をまとめずに全てそのまま返す
+
+[EXCEPT]  差集合
+あるSELECT文の検索結果に存在する行から、別のSELECT文の検索結果に存在する行を差し引く
+SELECT 文1
+EXCEPT (ALL)
+SELECT 文2
+*EXCEPT ALLでは重複行をまとめずに全てそのまま返す
+
+[INTERSECT] 積集合
+2つのSELECT文に共通する行を集めた集合
+SELECT 文1
+INTERSECT (ALL)
+SELECT 文2
+*INTERSECT ALLでは重複行をまとめずに全てそのまま返す
+
+[CASE]
+列の値や条件式を評価し、その結果に応じて値を自由に変換してくれる
+1.
+CASE 評価する列や式 WHEN 値1 THEN 値1のときに返す値
+                 ( WHEN 値2 THEN 値2のときに返す値)・・・
+                 ( ELSE デフォルト値)
+END
+2.
+CASE WHEN 条件1 THEN 条件1のときに返す値
+     (WHEN 条件2 THEN 条件2のときに返す値)・・・
+     (ELSE デフォルト値)
+END
